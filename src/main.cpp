@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include <thread>
+#include <future>
 
 #include "train.h"
 #include "functions.h"
