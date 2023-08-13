@@ -38,7 +38,7 @@ void Train::startMoving() {
 
     do
     {
-        std::cout << "Enter depart to let " << m_name << " go\n";
+        std::cout << "Enter \"depart\" to let " << m_name << " go\n";
         command = myCin<std::string>();
     } while (command != "depart");
 

@@ -3,7 +3,6 @@
 #include <string>
 #include <ctime>
 #include <thread>
-#include <future>
 
 #include "train.h"
 #include "functions.h"
@@ -22,13 +21,13 @@ int main() {
     vTrains.push_back(std::move(trainB));
     vTrains.push_back(std::move(trainC));
 
-    std::vector<std::future<void>> vFutures;
+    std::vector<std::thread> vThreads;
     for (auto& train : vTrains) {
-        vFutures.emplace_back(std::async(std::launch::async, &Train::startMoving, &train));
+        vThreads.push_back(std::thread(&Train::startMoving, &train));
     }
 
-    for (auto& future : vFutures) {
-        future.wait();
+    for (auto& thread : vThreads) {
+        thread.join();
     }
 
 
